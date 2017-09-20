@@ -35,7 +35,7 @@ Stick.prototype.crouch = function () {
 };
 
 Stick.prototype.getCoordinates = function () {
-    // Zwracanie koordynatow prawego gornego i lewego dolnego rogu
+    // Zwracanie koordynatow prawego gornego i prawego dolnego rogu
     return coordinates = {
         // Prawy gorny rog X
         x1: this.handle.offset().left + this.handle.width(),

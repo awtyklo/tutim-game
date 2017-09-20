@@ -47,10 +47,10 @@ body {
 }
 
 .obstacle.low {
-    bottom: 10%;
+    bottom: 3%;
 }
 
 .obstacle.high {
-    bottom: 60%;
+    bottom: 3%;
     background: yellow;
 }

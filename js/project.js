@@ -10,7 +10,7 @@ $(document).ready(function () {
 });
 
 function createObstacles(speed, stick) {
-    setInterval(function () {
+    // setInterval(function () {
         var o = new Obstacle();
         o.init();
         setTimeout(function () {
@@ -18,10 +18,9 @@ function createObstacles(speed, stick) {
         }, 50);
 
         setInterval(function() {
-            console.log(stick);
             console.log('Koliduje: '+o.collide(stick));
         }, 100);
-    }, speed);
+    // }, speed);
 }
 
 // Person.prototype.sayHello = function() {

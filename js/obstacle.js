@@ -44,15 +44,19 @@ Obstacle.prototype.getCoordinates = function () {
 };
 
 Obstacle.prototype.collide = function (stick) {
-    console.log(stick);
     if (stick instanceof Stick) {
-        console.log('@TODO: Collide');
         var coordinates = this.getCoordinates();
         var stickCoordinates = stick.getCoordinates();
-        console.log(coordinates);
-        console.log(stickCoordinates);
 
-        return 1;
+        if (coordinates.x1 <= stickCoordinates.x1 && stickCoordinates.y1 <= coordinates.y1 && coordinates.y1 <= stickCoordinates.y2) {
+            return true;
+        }
+
+        if (coordinates.x2 <= stickCoordinates.x2 && stickCoordinates.y1 <= coordinates.y2 && coordinates.y2 <= stickCoordinates.y2) {
+            return true;
+        }
+
+        return false;
     } else {
         throw new Error('Niepoprawny parametr');
     }
