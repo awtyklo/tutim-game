@@ -49,8 +49,23 @@ Obstacle.prototype.collide = function (stick) {
         console.log('@TODO: Collide');
         var coordinates = this.getCoordinates();
         var stickCoordinates = stick.getCoordinates();
+
+        //blue x1
+        console.log(stickCoordinates.x1);
+        console.log(stickCoordinates.y1);
+
+        //red x1
+        console.log(coordinates.x1);
         console.log(coordinates);
         console.log(stickCoordinates);
+
+
+        if (aboveOrBelow && leftToRight) {
+        }
+
+
+
+
 
         return 1;
     } else {
