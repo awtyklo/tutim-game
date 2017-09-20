@@ -1,5 +1,6 @@
 function Obstacle() {
     this.handle;
+    this.collided = false;
     var _position = {
         x1: 0,
         y1: 0,
@@ -45,14 +46,20 @@ Obstacle.prototype.getCoordinates = function () {
 
 Obstacle.prototype.collide = function (stick) {
     if (stick instanceof Stick) {
+        if (this.collided) {
+            return false;
+        }
+
         var coordinates = this.getCoordinates();
         var stickCoordinates = stick.getCoordinates();
 
         if (coordinates.x1 <= stickCoordinates.x1 && stickCoordinates.y1 <= coordinates.y1 && coordinates.y1 <= stickCoordinates.y2) {
+            this.collided = true;
             return true;
         }
 
         if (coordinates.x2 <= stickCoordinates.x2 && stickCoordinates.y1 <= coordinates.y2 && coordinates.y2 <= stickCoordinates.y2) {
+            this.collided = true;
             return true;
         }
 
