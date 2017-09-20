@@ -1,65 +1,28 @@
-function Stick() {
-    this.health = 3;
-    var _position = {
-        x1: 0,
-        y1: 0,
-        x2: 0,
-        y2: 0
-    }
+$(document).ready(function () {
+    // Inicjalizujemy ludzika
+    var stick = new Stick();
+    console.log(stick);
+    stick.init();
+    // stick.crouch();
+
+    // Tworzymy co 500ms przeszkody
+    createObstacles(1500, stick);
+});
+
+function createObstacles(speed, stick) {
+    setInterval(function () {
+        var o = new Obstacle();
+        o.init();
+        setTimeout(function () {
+            o.move();
+        }, 50);
+
+        setInterval(function() {
+            console.log(stick);
+            console.log('Koliduje: '+o.collide(stick));
+        }, 100);
+    }, speed);
 }
-
-function Obstacle() {
-    var _position = {
-        x1: 0,
-        y1: 0,
-        x2: 0,
-        y2: 0
-    }
-}
-
-Obstacle.prototype.init = function () {
-    // Dodanie elementu DOM do przestrzeni gry
-    $('#game').append('<div class="obstacle"></div>');
-};
-
-Obstacle.prototype.move = function () {
-    // Wprawienie przeszkody w ruch
-    // $('#game').append('<div class="obstacle"></div>');
-};
-
-
-// Inicjalizacja naszego czlowieka
-Stick.prototype.init = function () {
-    // Dodanie elementu DOM do przestrzeni gry
-    $('#game').append('<div id="stick" class="init"></div>');
-};
-
-Stick.prototype.getHealth = function () {
-    return this.health;
-};
-
-Stick.prototype.removeHp = function () {
-    this.health = this.health - 1;
-    if (this.health <= 0) {
-        console.log('@TODO: GAME OVER');
-    }
-};
-
-// Unikanie przeszkody (kucanie)
-Stick.prototype.crouch = function () {
-    $('#stick').css('height', '15vh');
-    console.log('@TODO: crouch');
-};
-
-
-var stick = new Stick();
-// Inicjalizujemy ludzika
-stick.init();
-stick.crouch();
-
-var o1 = new Obstacle();
-o1.init();
-o1.move();
 
 // Person.prototype.sayHello = function() {
 //     console.info('Witam ' + this.name);
